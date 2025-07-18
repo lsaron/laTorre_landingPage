@@ -63,15 +63,9 @@ export default function ProjectsHero() {
           muted
           loop
           playsInline
-          poster="/placeholder.svg?height=1080&width=1920&text=Projects+Video+Poster"
         >
-          <source src="/path/to/your/projects-video.mp4" type="video/mp4" />
-          <source src="/path/to/your/projects-video.webm" type="video/webm" />
-          {/* Fallback for browsers that don't support video */}
+           <source src="/videos/projectsHero.mp4" type="video/mp4" />
         </video>
-
-        {/* Fallback background for when video doesn't load */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black" />
       </div>
 
       {/* Translucent black overlay for better text readability */}

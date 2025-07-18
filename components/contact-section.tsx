@@ -5,9 +5,11 @@ import type React from "react"
 import { motion, useInView } from "framer-motion"
 import { useRef, useState } from "react"
 import { User, Phone, Mail, MessageSquare, CheckCircle, AlertCircle } from "lucide-react"
+import emailjs from "@emailjs/browser"
 
 export default function ContactSection() {
   const ref = useRef(null)
+  const formRef = useRef<HTMLFormElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   const [formData, setFormData] = useState({
@@ -32,43 +34,40 @@ export default function ContactSection() {
     setSubmitStatus("sending")
 
     try {
-      // Replace 'YOUR_REAL_EMAIL@gmail.com' with your actual Gmail address
-      const recipientEmail = "latorre@gmail.com" // <-- CHANGE THIS TO YOUR REAL EMAIL
+      // EmailJS configuration
+      const serviceId = "YOUR_SERVICE_ID" // Replace with your EmailJS service ID
+      const templateId = "YOUR_TEMPLATE_ID" // Replace with your EmailJS template ID
+      const publicKey = "YOUR_PUBLIC_KEY" // Replace with your EmailJS public key
 
-      const subject = `Nuevo contacto desde el sitio web - ${formData.name}`
-      const body = `
-Nuevo mensaje de contacto:
+      // Template parameters that will be sent to EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+        to_email: "latorre@gmail.com", // Company email address
+        subject: `Nuevo contacto desde el sitio web - ${formData.name}`,
+      }
 
-Nombre: ${formData.name}
-Teléfono: ${formData.phone}
-Email: ${formData.email}
+      // Send email using EmailJS
+      const response = await emailjs.send(serviceId, templateId, templateParams, publicKey)
 
-Mensaje:
-${formData.message}
+      if (response.status === 200) {
+        setSubmitStatus("success")
 
----
-Este mensaje fue enviado desde el formulario de contacto del sitio web de Constructora La Torre.
-      `.trim()
-
-      // Create mailto URL with all the form data
-      const mailtoUrl = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-
-      // Open the user's email client
-      window.open(mailtoUrl, "_self")
-
-      // Show success message
-      setSubmitStatus("success")
-
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        setFormData({
-          name: "",
-          phone: "",
-          email: "",
-          message: "",
-        })
-        setSubmitStatus("idle")
-      }, 3000)
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          setFormData({
+            name: "",
+            phone: "",
+            email: "",
+            message: "",
+          })
+          setSubmitStatus("idle")
+        }, 3000)
+      } else {
+        throw new Error("Failed to send email")
+      }
     } catch (error) {
       console.error("Error sending email:", error)
       setSubmitStatus("error")
@@ -113,6 +112,33 @@ Este mensaje fue enviado desde el formulario de contacto del sitio web de Constr
                 <span className="text-gray-700 text-lg">+506-8888-8888</span>
               </motion.div>
             </div>
+
+            {/* EmailJS Setup Instructions */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg"
+            >
+              <h3 className="text-sm font-semibold text-yellow-800 mb-2">📧 Configuración EmailJS</h3>
+              <div className="text-xs text-yellow-700 space-y-1">
+                <p>
+                  <strong>1.</strong> Crear cuenta en{" "}
+                  <a href="https://emailjs.com" target="_blank" rel="noopener noreferrer" className="underline">
+                    emailjs.com
+                  </a>
+                </p>
+                <p>
+                  <strong>2.</strong> Configurar servicio de email (Gmail, Outlook, etc.)
+                </p>
+                <p>
+                  <strong>3.</strong> Crear template con variables: from_name, from_email, phone, message
+                </p>
+                <p>
+                  <strong>4.</strong> Reemplazar IDs en el código: SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY
+                </p>
+              </div>
+            </motion.div>
           </motion.div>
 
           {/* Contact Form */}
@@ -121,7 +147,7 @@ Este mensaje fue enviado desde el formulario de contacto del sitio web de Constr
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           >
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-8">
               <div className="relative">
                 <User className="absolute left-0 top-3 w-5 h-5 text-[#f9dc5c]" />
                 <input
@@ -214,7 +240,7 @@ Este mensaje fue enviado desde el formulario de contacto del sitio web de Constr
                   animate={{ opacity: 1, y: 0 }}
                   className="text-center text-green-600 text-sm"
                 >
-                  ¡Mensaje enviado exitosamente! Se abrirá su cliente de correo.
+                  ¡Mensaje enviado exitosamente! Nos pondremos en contacto pronto.
                 </motion.div>
               )}
 

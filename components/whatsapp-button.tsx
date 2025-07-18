@@ -39,7 +39,7 @@ export default function WhatsAppButton() {
 
   const handleWhatsAppClick = () => {
     // Replace with your actual WhatsApp number (include country code without + or spaces)
-    const phoneNumber = "50688888888" // Example: Costa Rica number
+    const phoneNumber = "50687467602" // Example: Costa Rica number
     const message = "Hola, me gustaría obtener más información sobre sus servicios de construcción."
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
 
@@ -83,5 +83,5 @@ export default function WhatsAppButton() {
       {/* Pulse animation */}
       <div className="absolute inset-0 rounded-full bg-black animate-ping opacity-20" />
     </motion.button>
-  )
+  ) 
 }

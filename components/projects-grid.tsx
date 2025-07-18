@@ -60,35 +60,7 @@ const projects = [
     title: "Descripción del Proyecto",
     location: "Ubicación",
     image: "/placeholder.svg?height=300&width=400&text=Residential+House",
-  },
-  {
-    id: 9,
-    category: "Categoría del Proyecto",
-    title: "Descripción del Proyecto",
-    location: "Ubicación",
-    image: "/placeholder.svg?height=300&width=400&text=Warehouse",
-  },
-  {
-    id: 10,
-    category: "Categoría del Proyecto",
-    title: "Descripción del Proyecto",
-    location: "Ubicación",
-    image: "/placeholder.svg?height=300&width=400&text=Modern+House",
-  },
-  {
-    id: 11,
-    category: "Categoría del Proyecto",
-    title: "Descripción del Proyecto",
-    location: "Ubicación",
-    image: "/placeholder.svg?height=300&width=400&text=Contemporary+Home",
-  },
-  {
-    id: 12,
-    category: "Categoría del Proyecto",
-    title: "Descripción del Proyecto",
-    location: "Ubicación",
-    image: "/placeholder.svg?height=300&width=400&text=Villa+Project",
-  },
+  }
 ]
 
 export default function ProjectsGrid() {
