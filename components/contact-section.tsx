@@ -99,7 +99,12 @@ export default function ContactSection() {
                 className="flex items-center space-x-3"
               >
                 <Mail className="w-6 h-6 text-[#f9dc5c]" />
-                <span className="text-gray-700 text-lg">latorre@gmail.com</span>
+                <a
+                  href="mailto:latorre@gmail.com"
+                  className="text-gray-700 text-lg hover:text-[#f9dc5c] transition-colors duration-300 cursor-pointer"
+                >
+                  latorre@gmail.com
+                </a>
               </motion.div>
 
               <motion.div
@@ -109,7 +114,12 @@ export default function ContactSection() {
                 className="flex items-center space-x-3"
               >
                 <Phone className="w-6 h-6 text-[#f9dc5c]" />
-                <span className="text-gray-700 text-lg">+506-8888-8888</span>
+                <a
+                  href="tel:+50688888888"
+                  className="text-gray-700 text-lg hover:text-[#f9dc5c] transition-colors duration-300 cursor-pointer"
+                >
+                  +506-8888-8888
+                </a>
               </motion.div>
             </div>
 
