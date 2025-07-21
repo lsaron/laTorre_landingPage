@@ -87,7 +87,8 @@ export default function WhatsAppButton() {
         bottom: `${bottomOffset}px`,
         transition: "bottom 0.3s ease-out",
         pointerEvents: "auto", 
-      }}
+      }
+    }
       type="button" 
     >
       <svg
