@@ -39,7 +39,6 @@ export default function ContactSection() {
       const templateId = "YOUR_TEMPLATE_ID" // Replace with your EmailJS template ID
       const publicKey = "YOUR_PUBLIC_KEY" // Replace with your EmailJS public key
 
-      // Template parameters that will be sent to EmailJS
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
