@@ -92,4 +92,64 @@
     @apply bg-background text-foreground;
     font-family: "Inter", system-ui, -apple-system, sans-serif;
   }
+  
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #f9dc5c;
+    border-radius: 6px;
+    border: 2px solid #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #f7d32c;
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background: #f5c842;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: #f1f1f1;
+  }
+
+  /* Firefox */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #f9dc5c #f1f1f1;
+  }
+
+  /* For dark mode */
+  .dark ::-webkit-scrollbar-track {
+    background: #2d2d2d;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: #f9dc5c;
+    border: 2px solid #2d2d2d;
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: #f7d32c;
+  }
+
+  .dark ::-webkit-scrollbar-thumb:active {
+    background: #f5c842;
+  }
+
+  .dark ::-webkit-scrollbar-corner {
+    background: #2d2d2d;
+  }
+
+  .dark {
+    scrollbar-color: #f9dc5c #2d2d2d;
+  }
 }
