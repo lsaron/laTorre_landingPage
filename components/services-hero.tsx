@@ -6,17 +6,13 @@ import { useState, useEffect } from "react"
 export default function ServicesHero() {
   const [shouldAnimate, setShouldAnimate] = useState(false)
 
-  // Start animation after page loader finishes
+
   useEffect(() => {
-    // Wait for the page loader to finish (2.5s) plus a small buffer
     const timer = setTimeout(() => {
       setShouldAnimate(true)
-    }, 3000) // 3 seconds to ensure loader is completely done
-
+    }, 3000) 
     return () => clearTimeout(timer)
   }, [])
-
-  // Split text into individual letters
   const splitText = (text: string) => {
     return text.split("").map((char, index) => (
       <motion.span
@@ -37,9 +33,9 @@ export default function ServicesHero() {
               }
         }
         transition={{
-          duration: 0.95, // 950ms duration
-          ease: [0.19, 1, 0.22, 1], // easeOutExpo equivalent
-          delay: shouldAnimate ? index * 0.07 : 0, // 70ms per letter only when animating
+          duration: 0.95, 
+          ease: [0.19, 1, 0.22, 1], 
+          delay: shouldAnimate ? index * 0.07 : 0, 
         }}
         className="inline-block"
         style={{
@@ -55,10 +51,9 @@ export default function ServicesHero() {
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      {/* Background Video */}
       <div className="absolute inset-0 w-full h-full">
         <video className="w-full h-full object-cover" autoPlay muted loop playsInline>
-          <source src="/videos/serviciosVideo.mp4" type="video/mp4" />
+          <source src="/videos/servicesHero.mp4" type="video/mp4" />
         </video>
       </div>
       <div className="absolute inset-0 bg-black/50" />

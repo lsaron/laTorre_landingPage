@@ -5,21 +5,32 @@ import type React from "react"
 import { motion, useInView } from "framer-motion"
 import { useRef, useState } from "react"
 import { User, Phone, Mail, MessageSquare, CheckCircle, AlertCircle } from "lucide-react"
-import emailjs from "@emailjs/browser"
+
+interface FormData {
+  name: string
+  email: string
+  phone: string
+  message: string
+}
+
+interface SubmitResponse {
+  success: boolean
+  message: string
+}
 
 export default function ContactSection() {
   const ref = useRef(null)
-  const formRef = useRef<HTMLFormElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
-    phone: "",
     email: "",
+    phone: "",
     message: "",
   })
 
   const [submitStatus, setSubmitStatus] = useState<"idle" | "sending" | "success" | "error">("idle")
+  const [errorMessage, setErrorMessage] = useState("")
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -32,49 +43,44 @@ export default function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitStatus("sending")
+    setErrorMessage("")
 
     try {
-      // EmailJS configuration
-      const serviceId = "YOUR_SERVICE_ID" // Replace with your EmailJS service ID
-      const templateId = "YOUR_TEMPLATE_ID" // Replace with your EmailJS template ID
-      const publicKey = "YOUR_PUBLIC_KEY" // Replace with your EmailJS public key
+      const response = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
 
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        phone: formData.phone,
-        message: formData.message,
-        to_email: "latorre@gmail.com", // Company email address
-        subject: `Nuevo contacto desde el sitio web - ${formData.name}`,
-      }
+      const result: SubmitResponse = await response.json()
 
-      // Send email using EmailJS
-      const response = await emailjs.send(serviceId, templateId, templateParams, publicKey)
-
-      if (response.status === 200) {
+      if (response.ok && result.success) {
         setSubmitStatus("success")
-
         // Reset form after 3 seconds
         setTimeout(() => {
           setFormData({
             name: "",
-            phone: "",
             email: "",
+            phone: "",
             message: "",
           })
           setSubmitStatus("idle")
         }, 3000)
       } else {
-        throw new Error("Failed to send email")
+        throw new Error(result.message || "Error al enviar el mensaje")
       }
     } catch (error) {
       console.error("Error sending email:", error)
       setSubmitStatus("error")
+      setErrorMessage(error instanceof Error ? error.message : "Error al enviar el mensaje")
 
-      // Reset error status after 3 seconds
+      // Reset error status after 5 seconds
       setTimeout(() => {
         setSubmitStatus("idle")
-      }, 3000)
+        setErrorMessage("")
+      }, 5000)
     }
   }
 
@@ -122,29 +128,26 @@ export default function ContactSection() {
               </motion.div>
             </div>
 
-            {/* EmailJS Setup Instructions */}
+            {/* Brevo Setup Instructions */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg"
+              className="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg"
             >
-              <h3 className="text-sm font-semibold text-yellow-800 mb-2">📧 Configuración EmailJS</h3>
-              <div className="text-xs text-yellow-700 space-y-1">
+              <h3 className="text-sm font-semibold text-blue-800 mb-2">📧 Configuración Brevo</h3>
+              <div className="text-xs text-blue-700 space-y-1">
                 <p>
-                  <strong>1.</strong> Crear cuenta en{" "}
-                  <a href="https://emailjs.com" target="_blank" rel="noopener noreferrer" className="underline">
-                    emailjs.com
-                  </a>
+                  <strong>1.</strong> Agregar variable de entorno: <code>BREVO_API_KEY=tu_api_key</code>
                 </p>
                 <p>
-                  <strong>2.</strong> Configurar servicio de email (Gmail, Outlook, etc.)
+                  <strong>2.</strong> Configurar email remitente verificado en Brevo
                 </p>
                 <p>
-                  <strong>3.</strong> Crear template con variables: from_name, from_email, phone, message
+                  <strong>3.</strong> Actualizar email de destino en API route
                 </p>
                 <p>
-                  <strong>4.</strong> Reemplazar IDs en el código: SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY
+                  <strong>4.</strong> Reiniciar servidor para aplicar cambios
                 </p>
               </div>
             </motion.div>
@@ -156,7 +159,7 @@ export default function ContactSection() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           >
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-8">
               <div className="relative">
                 <User className="absolute left-0 top-3 w-5 h-5 text-[#f9dc5c]" />
                 <input
@@ -172,12 +175,12 @@ export default function ContactSection() {
               </div>
 
               <div className="relative">
-                <Phone className="absolute left-0 top-3 w-5 h-5 text-[#f9dc5c]" />
+                <Mail className="absolute left-0 top-3 w-5 h-5 text-[#f9dc5c]" />
                 <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Teléfono"
-                  value={formData.phone}
+                  type="email"
+                  name="email"
+                  placeholder="Correo..."
+                  value={formData.email}
                   onChange={handleInputChange}
                   className="w-full pl-8 py-3 bg-transparent border-b-2 border-gray-300 focus:border-[#f9dc5c] outline-none transition-colors duration-300 text-gray-900 placeholder-gray-500"
                   required
@@ -186,12 +189,12 @@ export default function ContactSection() {
               </div>
 
               <div className="relative">
-                <Mail className="absolute left-0 top-3 w-5 h-5 text-[#f9dc5c]" />
+                <Phone className="absolute left-0 top-3 w-5 h-5 text-[#f9dc5c]" />
                 <input
-                  type="email"
-                  name="email"
-                  placeholder="Correo..."
-                  value={formData.email}
+                  type="tel"
+                  name="phone"
+                  placeholder="Teléfono"
+                  value={formData.phone}
                   onChange={handleInputChange}
                   className="w-full pl-8 py-3 bg-transparent border-b-2 border-gray-300 focus:border-[#f9dc5c] outline-none transition-colors duration-300 text-gray-900 placeholder-gray-500"
                   required
@@ -259,7 +262,7 @@ export default function ContactSection() {
                   animate={{ opacity: 1, y: 0 }}
                   className="text-center text-red-600 text-sm"
                 >
-                  Error al enviar el mensaje. Por favor, inténtelo de nuevo.
+                  {errorMessage || "Error al enviar el mensaje. Por favor, inténtelo de nuevo."}
                 </motion.div>
               )}
             </form>

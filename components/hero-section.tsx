@@ -30,7 +30,7 @@ export default function HeroSection() {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="text-sm text-gray-300 mb-4 tracking-wider"
             >
-            Trabajo en equipo | Integridad | Compromiso
+            GRUPO LA TORRE CONSTRUCTORA
           </motion.div>
 
           <div className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight overflow-hidden">
@@ -63,6 +63,7 @@ export default function HeroSection() {
                 >
                   DIFERENCIA
                 </motion.span>
+                
               </div>
             </div>
           </div>
