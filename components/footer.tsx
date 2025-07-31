@@ -16,7 +16,7 @@ export default function Footer() {
           <div className="flex items-center justify-center mb-4">
             <img src="/logo-white.svg" alt="La Torre Grupo Constructora" className="h-20 w-auto" />
           </div>
-          <p className="text-gray-400 text-sm">© 2025 Constructora La Torre. Todos los derechos reservados.</p>
+          <p className="text-gray-400 text-sm">© 2025 Grupo La Torre Constructora. Todos los derechos reservados.</p>
         </motion.div>
       </div>
     </footer>

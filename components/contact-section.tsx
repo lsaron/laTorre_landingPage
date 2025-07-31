@@ -105,10 +105,10 @@ export default function ContactSection() {
               >
                 <Mail className="w-6 h-6 text-[#f9dc5c]" />
                 <a
-                  href="mailto:latorre@gmail.com"
+                  href="mailto:servicioalcliente@grupolatorreconstructora.com"
                   className="text-gray-700 text-lg hover:text-[#f9dc5c] transition-colors duration-300 cursor-pointer"
                 >
-                  latorre@gmail.com
+                  servicioalcliente@grupolatorreconstructora.com
                 </a>
               </motion.div>
 
@@ -120,37 +120,13 @@ export default function ContactSection() {
               >
                 <Phone className="w-6 h-6 text-[#f9dc5c]" />
                 <a
-                  href="tel:+50688888888"
+                  href="tel:+506-8785-6105"
                   className="text-gray-700 text-lg hover:text-[#f9dc5c] transition-colors duration-300 cursor-pointer"
                 >
-                  +506-8888-8888
+                  +506-8785-6105
                 </a>
               </motion.div>
             </div>
-
-            {/* Brevo Setup Instructions */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg"
-            >
-              <h3 className="text-sm font-semibold text-blue-800 mb-2">📧 Configuración Brevo</h3>
-              <div className="text-xs text-blue-700 space-y-1">
-                <p>
-                  <strong>1.</strong> Agregar variable de entorno: <code>BREVO_API_KEY=tu_api_key</code>
-                </p>
-                <p>
-                  <strong>2.</strong> Configurar email remitente verificado en Brevo
-                </p>
-                <p>
-                  <strong>3.</strong> Actualizar email de destino en API route
-                </p>
-                <p>
-                  <strong>4.</strong> Reiniciar servidor para aplicar cambios
-                </p>
-              </div>
-            </motion.div>
           </motion.div>
 
           {/* Contact Form */}
@@ -250,7 +226,7 @@ export default function ContactSection() {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-center text-green-600 text-sm"
+                  className="text-center #f9dc5c text-sm"
                 >
                   ¡Mensaje enviado exitosamente! Nos pondremos en contacto pronto.
                 </motion.div>

@@ -8,7 +8,10 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "La Torre Grupo Constructora",
-  description: "Constructora costarricense dedicada al desarrollo de proyectos de calidad"
+  description: "Constructora costarricense dedicada al desarrollo de proyectos de calidad",
+  icons: {
+    icon: "/favicon.svg", // también podés usar .ico si preferís
+  },
 }
 
 export default function RootLayout({

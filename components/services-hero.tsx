@@ -66,7 +66,7 @@ export default function ServicesHero() {
             transition={{ delay: shouldAnimate ? 0.8 : 3.8, duration: 0.8 }}
             className="text-sm text-amber-200 mb-4 tracking-wider"
           >
-            Trabajo en equipo | Integridad | Compromiso
+            Grupo La Torre Constructora
           </motion.div>
 
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">{splitText("Servicios")}</h1>

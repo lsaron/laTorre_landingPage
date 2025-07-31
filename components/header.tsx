@@ -159,7 +159,7 @@ export default function Header() {
               {/* Social Media Icons */}
               <div className="flex items-center space-x-3">
                 <motion.a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/grupolatorreconstructora?igsh=cWJ0ZjZ4eDRjd3M%3D&utm_source=qr"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
