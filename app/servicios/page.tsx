@@ -6,7 +6,6 @@ import ConsultingSection from "@/components/consulting-section"
 import CommercialSection from "@/components/commercial-section"
 import DesignPlansSection from "@/components/design-plans-section"
 import ElectricalSection from "@/components/electrical-section"
-import ComunicationSection from "@/components/comunication-section"
 import TurnkeySection from "@/components/turnkey-section"
 import RenovationsSection from "@/components/renovations-section"
 import MaintenanceSection from "@/components/maintenance-section"
@@ -25,7 +24,6 @@ export default function ServicesPage() {
         <CommercialSection />
         <DesignPlansSection />
         <ElectricalSection />
-        {/* <ComunicationSection /> */}
         <TurnkeySection />
         <RenovationsSection />
         <MaintenanceSection />

@@ -33,7 +33,7 @@ export default function PreConstructionSection() {
           >
             <div className="relative overflow-hidden rounded-lg shadow-xl">
               <img
-                src="/images/Preconstruccion.jpg?height=400&width=600&text=Planning+Documents"
+                src="/images/PreConstruccion.jpg?height=400&width=600&text=Planning+Documents"
                 alt="Pre-construction planning"
                 className="w-full h-90 object-cover"
               />
