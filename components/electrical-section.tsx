@@ -19,7 +19,7 @@ export default function ElectricalSection() {
           >
             <div className="relative overflow-hidden rounded-lg shadow-xl">
               <img
-                src="/images/electric.jpg?height=400&width=600&text=Electrical+Systems"
+                src="/images/redes.jpg?height=400&width=600&text=Electrical+Systems"
                 alt="Electrical services"
                 className="w-full h-90 object-cover"
               />
@@ -32,13 +32,13 @@ export default function ElectricalSection() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="order-1 lg:order-2"
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Servicio eléctrico especializado</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6"> Sistemas eléctricos y redes estructuradas</h2>
             <p className="text-gray-600 leading-relaxed">
-              Ofrecemos soluciones eléctricas completas que incluyen diseño, instalación, inspección y mantenimiento de
-              sistemas eléctricos residenciales, comerciales e industriales. Trabajamos con materiales certificados,
-              garantizando eficiencia energética, seguridad y continuidad operativa. Desde la distribución general hasta
-              instalaciones específicas, nos aseguramos de que cada proyecto eléctrico sea confiable y sostenible en el
-              tiempo.
+              Ofrecemos soluciones completas en instalaciones eléctricas y redes de comunicación.
+              Diseñamos e implementamos sistemas seguros, eficientes y preparados para las necesidades actuales de hogares, negocios e industrias.
+              Desde la distribución eléctrica hasta el cableado estructurado para voz y datos, trabajamos con materiales certificados y bajo normativas vigentes, 
+              asegurando conectividad confiable y operación continua.
+
             </p>
           </motion.div>
         </div>

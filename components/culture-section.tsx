@@ -6,8 +6,6 @@ import { useRef } from "react"
 export default function CultureSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
-
-  // Split text into individual letters
   const splitText = (text: string) => {
     return text.split("").map((char, index) => (
       <motion.span
@@ -17,7 +15,7 @@ export default function CultureSection() {
         transition={{
           duration: 0.6,
           ease: "easeOut",
-          delay: 0.4 + index * 0.034, // Stagger each letter
+          delay: 0.4 + index * 0.034, 
         }}
         className="inline-block"
       >
@@ -30,7 +28,6 @@ export default function CultureSection() {
     <section ref={ref} className="py-20 bg-gray-50">
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Text content on the left */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -53,8 +50,6 @@ export default function CultureSection() {
               </p>
             </div>
           </motion.div>
-
-          {/* Animated title on the right */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -64,7 +59,6 @@ export default function CultureSection() {
             <div className="text-right">
               <div className="text-6xl md:text-7xl lg:text-8xl font-bold text-gray-900 leading-tight uppercase tracking-wider">
                 <div className="relative inline-block pt-1 pr-1 pb-3">
-                  {/* Title text with letter animation only */}
                   <div className="relative">
                     <div>{splitText("Nuestra")}</div>
                     <div className="text-[#f9dc5c]">{splitText("cultura")}</div>

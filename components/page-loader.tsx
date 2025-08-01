@@ -10,8 +10,6 @@ export default function PageLoader() {
   const [isNavigating, setIsNavigating] = useState(false)
   const pathname = usePathname()
   const isSmoothScrolling = useRef(false)
-
-  // Handle initial page load
   useEffect(() => {
     if (isInitialLoad) {
       setIsLoading(true)
@@ -40,7 +38,6 @@ export default function PageLoader() {
     }
   }, [isInitialLoad])
 
-  // Handle route changes (but not initial load)
   useEffect(() => {
     if (!isInitialLoad && isNavigating && !isSmoothScrolling.current) {
       setIsLoading(true)
@@ -56,7 +53,7 @@ export default function PageLoader() {
   // Expose function to trigger navigation loading
   useEffect(() => {
     const handleNavigationStart = () => {
-      // Only trigger loader if we're not smooth scrolling and not on initial load
+  
       if (!isInitialLoad && !isSmoothScrolling.current) {
         setIsNavigating(true)
       }
@@ -105,8 +102,6 @@ export default function PageLoader() {
               LA TORRE
             </motion.div>
           </div>
-
-          {/* Floating animated elements */}
           <div className="absolute inset-0 overflow-hidden">
             {/* Small floating circles */}
             <motion.div
@@ -212,7 +207,7 @@ export default function PageLoader() {
               transition={{ duration: 1, delay: 0.5 }}
               className="mb-8"
             >
-              <img src="/logo-black.svg" alt="La Torre Grupo Constructora" className="h-24 w-auto" />
+              <img src="/logo-black.svg" alt="La Torre Grupo Constructora" className="h-36 w-auto" />
             </motion.div>
 
             {/* Loading bar */}

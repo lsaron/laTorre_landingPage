@@ -8,38 +8,32 @@ const slides = [
   {
     id: 1,
     title: "Planos Arquitectónicos",
-    description: "Diseños detallados que definen la estructura y distribución de espacios",
-    image: "/staff/plano.jpg?height=300&width=400&text=Architectural+Plans",
+    image: "/staff/plano.jpg?height=300&width=4000&text=Architectural+Plans",
   },
   {
     id: 2,
-    title: "Planos Eléctricos",
-    description: "Sistemas eléctricos completos con normativas de seguridad",
-    image: "/staff/Plane.jpg?height=300&width=400&text=Electrical+Plans",
+    title: "Modelado 3D",
+    image: "/staff/3d.jpg?height=300&width=400&text=Electrical+Plans",
   },
   {
     id: 3,
-    title: "Planos Estructurales",
-    description: "Cálculos y diseños de resistencia para construcciones seguras",
-    image: "/staff/sala2.jpg?height=300&width=400&text=Structural+Plans",
+    title: "Planos Eléctricos",
+    image: "/staff/electro.jpg?height=300&width=400&text=Structural+Plans",
   },
   {
     id: 4,
-    title: "Planos Especiales",
-    description: "Diseños personalizados para necesidades específicas del proyecto",
-    image: "/staff/acsPlane.jpg?height=300&width=400&text=Special+Plans",
+    title: "Renderizado 3D",
+    image: "/staff/render.jpg?height=300&width=400&text=Special+Plans",
   },
   {
     id: 5,
-    title: "Modelado 3D",
-    description: "Visualizaciones tridimensionales para mejor comprensión del proyecto",
-    image: "/staff/3d.jpg?height=300&width=400&text=3D+Modeling",
+    title: "Renderizado fotorealista",
+    image: "/staff/restaurante.jpg?height=300&width=400&text=3D+Modeling",
   },
   {
     id: 6,
-    title: "Renders Fotorrealistas",
-    description: "Imágenes realistas del proyecto terminado antes de construir",
-    image: "/staff/render.jpg?height=300&width=400&text=Photorealistic+Renders",
+    title: "Maquetas virtuales",
+    image: "/staff/sala.jpg?height=300&width=400&text=Photorealistic+Renders",
   },
 ]
 
@@ -49,19 +43,15 @@ export default function DesignPlansSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
   const [shouldAnimateTitle, setShouldAnimateTitle] = useState(false)
-
-  // Start title animation when section comes into view
   useEffect(() => {
     if (isInView) {
       const timer = setTimeout(() => {
         setShouldAnimateTitle(true)
-      }, 200) // Small delay after section is in view
+      }, 200) 
 
       return () => clearTimeout(timer)
     }
   }, [isInView])
-
-  // Split text into words
   const splitWords = (text: string) => {
     return text.split(" ").map((word, index) => (
       <motion.span
@@ -82,9 +72,9 @@ export default function DesignPlansSection() {
               }
         }
         transition={{
-          duration: 0.6, // 600ms duration
-          ease: [0.075, 0.82, 0.165, 1], // easeOutCirc equivalent
-          delay: shouldAnimateTitle ? index * 0.6 : 0, // 600ms delay between words
+          duration: 0.6, 
+          ease: [0.075, 0.82, 0.165, 1], 
+          delay: shouldAnimateTitle ? index * 0.5 : 0, // 600ms delay between words
         }}
         className={`inline-block mr-4 ${word.toLowerCase() === "planos" ? "text-[#f9dc5c]" : ""}`}
         style={{
@@ -125,7 +115,6 @@ export default function DesignPlansSection() {
   return (
     <section ref={ref} className="py-20 bg-white w-full">
       <div className="container mx-auto px-6">
-        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-extrabold text-gray-900 mb-6 uppercase tracking-wider">
             {splitWords("Diseño y elaboración de planos")}
@@ -150,7 +139,7 @@ export default function DesignPlansSection() {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 2.2, ease: "easeOut" }} // After title and description
+          transition={{ duration: 0.8, delay: 2.2, ease: "easeOut" }} 
           className="relative w-full max-w-6xl mx-auto"
         >
           <div
@@ -177,7 +166,6 @@ export default function DesignPlansSection() {
                           />
                         </div>
                         <h3 className="text-lg font-semibold text-gray-900 mb-2">{slide.title}</h3>
-                        <p className="text-sm text-gray-600 leading-relaxed">{slide.description}</p>
                       </div>
                     </div>
                   </div>

@@ -8,7 +8,10 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "La Torre Grupo Constructora",
-  description: "Constructora costarricense dedicada al desarrollo de proyectos de calidad"
+  description: "Constructora costarricense dedicada al desarrollo de proyectos de calidad",
+  icons: {
+    icon: "/favicon.svg",
+  },
 }
 
 export default function RootLayout({
@@ -17,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
       <body className={inter.className}>
         <PageLoader />
         {children}

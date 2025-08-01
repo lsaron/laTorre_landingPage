@@ -1,57 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 246.64 277.38">
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.22 273.67">
   <defs>
     <style>
       .cls-1 {
-        letter-spacing: .17em;
+        font-size: 14.2px;
+        letter-spacing: .5em;
       }
 
-      .cls-1, .cls-2 {
-        font-size: 30px;
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        fill: #fff;
       }
 
-      .cls-1, .cls-2, .cls-3, .cls-4 {
+      .cls-1, .cls-3, .cls-4, .cls-5 {
         font-family: NewsCycle, 'News Cycle';
       }
 
-      .cls-2 {
-        letter-spacing: .17em;
+      .cls-2, .cls-6 {
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-6 {
+        fill: none;
       }
 
       .cls-3 {
-        font-size: 16px;
+        font-size: 16.06px;
         letter-spacing: .5em;
       }
 
       .cls-4 {
-        font-size: 15px;
-        letter-spacing: .5em;
+        letter-spacing: .17em;
+      }
+
+      .cls-4, .cls-5 {
+        font-size: 26.62px;
       }
 
       .cls-5 {
-        fill: none;
-        stroke: #000;
-        stroke-miterlimit: 10;
-        stroke-width: 3px;
+        letter-spacing: .17em;
       }
     </style>
   </defs>
   <g id="Logo">
     <g id="Lines">
-      <polyline class="cls-5" points="59.72 175.19 59.72 2.47 114.38 30.92 114.38 178.2"/>
-      <polyline class="cls-5" points="130.11 176.39 130.61 91.14 185.05 113.14 185.05 178.03"/>
-      <line class="cls-5" x1="115.89" y1="176.69" x2="93.56" y2="176.69"/>
-      <line class="cls-5" x1="58.22" y1="176.69" x2="80.89" y2="176.69"/>
-      <line class="cls-5" x1="95.06" y1="175.22" x2="95.49" y2="83.49"/>
-      <polyline class="cls-5" points="150.24 178.12 149.29 47.19 96.4 83.54 94.84 84.73"/>
-      <line class="cls-5" x1="128.61" y1="176.63" x2="150.83" y2="176.63"/>
-      <polyline class="cls-5" points="26.23 177.86 26.23 102.3 76.13 77.67 79.39 75.92 79.39 175.2"/>
+      <polyline class="cls-6" points="80.8 173.01 80.8 .82 135.47 29.18 135.47 176.02"/>
+      <polyline class="cls-6" points="151.2 174.21 151.69 89.22 206.13 111.15 206.13 175.84"/>
+      <line class="cls-2" x1="136.97" y1="174.51" x2="114.64" y2="174.51"/>
+      <line class="cls-2" x1="79.3" y1="174.51" x2="101.98" y2="174.51"/>
+      <line class="cls-2" x1="116.14" y1="173.04" x2="116.58" y2="81.59"/>
+      <polyline class="cls-6" points="171.32 175.93 170.37 45.41 117.48 81.64 115.92 82.83"/>
+      <line class="cls-2" x1="149.7" y1="174.45" x2="171.92" y2="174.45"/>
+      <polyline class="cls-6" points="47.31 175.67 47.31 100.35 97.21 75.79 100.48 74.05 100.48 173.02"/>
     </g>
     <g id="Text">
-      <text class="cls-2" transform="translate(15.87 223.92) scale(1.17 1)"><tspan x="0" y="0">LA </tspan></text>
-      <text class="cls-1" transform="translate(78.75 223.92) scale(1.18 1)"><tspan x="0" y="0">TORRE</tspan></text>
-      <text class="cls-3" transform="translate(58.95 248.91) scale(1.18 1)"><tspan x="0" y="0">GRUPO</tspan></text>
-      <text class="cls-4" transform="translate(0 271.56) scale(1.18 1)"><tspan x="0" y="0">CONSTRUCTORA</tspan></text>
+      <text class="cls-5" transform="translate(36.96 227.46) scale(1.32 1)"><tspan x="0" y="0">LA </tspan></text>
+      <text class="cls-4" transform="translate(99.83 227.46) scale(1.33 1)"><tspan x="0" y="0">TORRE</tspan></text>
+      <text class="cls-1" transform="translate(80.04 249.63) scale(1.33 1)"><tspan x="0" y="0">GRUPO</tspan></text>
+      <text/>
+      <text class="cls-3" transform="translate(0 267.45) scale(1.33 1)"><tspan x="0" y="0">CONSTRUCTORA</tspan></text>
     </g>
   </g>
 </svg>

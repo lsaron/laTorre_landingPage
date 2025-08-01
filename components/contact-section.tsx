@@ -6,18 +6,31 @@ import { motion, useInView } from "framer-motion"
 import { useRef, useState } from "react"
 import { User, Phone, Mail, MessageSquare, CheckCircle, AlertCircle } from "lucide-react"
 
+interface FormData {
+  name: string
+  email: string
+  phone: string
+  message: string
+}
+
+interface SubmitResponse {
+  success: boolean
+  message: string
+}
+
 export default function ContactSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
-    phone: "",
     email: "",
+    phone: "",
     message: "",
   })
 
   const [submitStatus, setSubmitStatus] = useState<"idle" | "sending" | "success" | "error">("idle")
+  const [errorMessage, setErrorMessage] = useState("")
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -30,53 +43,44 @@ export default function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitStatus("sending")
+    setErrorMessage("")
 
     try {
-      // Replace 'YOUR_REAL_EMAIL@gmail.com' with your actual Gmail address
-      const recipientEmail = "latorre@gmail.com" // <-- CHANGE THIS TO YOUR REAL EMAIL
+      const response = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
 
-      const subject = `Nuevo contacto desde el sitio web - ${formData.name}`
-      const body = `
-Nuevo mensaje de contacto:
+      const result: SubmitResponse = await response.json()
 
-Nombre: ${formData.name}
-Teléfono: ${formData.phone}
-Email: ${formData.email}
-
-Mensaje:
-${formData.message}
-
----
-Este mensaje fue enviado desde el formulario de contacto del sitio web de Constructora La Torre.
-      `.trim()
-
-      // Create mailto URL with all the form data
-      const mailtoUrl = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-
-      // Open the user's email client
-      window.open(mailtoUrl, "_self")
-
-      // Show success message
-      setSubmitStatus("success")
-
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        setFormData({
-          name: "",
-          phone: "",
-          email: "",
-          message: "",
-        })
-        setSubmitStatus("idle")
-      }, 3000)
+      if (response.ok && result.success) {
+        setSubmitStatus("success")
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            message: "",
+          })
+          setSubmitStatus("idle")
+        }, 3000)
+      } else {
+        throw new Error(result.message || "Error al enviar el mensaje")
+      }
     } catch (error) {
       console.error("Error sending email:", error)
       setSubmitStatus("error")
+      setErrorMessage(error instanceof Error ? error.message : "Error al enviar el mensaje")
 
-      // Reset error status after 3 seconds
+      // Reset error status after 5 seconds
       setTimeout(() => {
         setSubmitStatus("idle")
-      }, 3000)
+        setErrorMessage("")
+      }, 5000)
     }
   }
 
@@ -100,7 +104,12 @@ Este mensaje fue enviado desde el formulario de contacto del sitio web de Constr
                 className="flex items-center space-x-3"
               >
                 <Mail className="w-6 h-6 text-[#f9dc5c]" />
-                <span className="text-gray-700 text-lg">latorre@gmail.com</span>
+                <a
+                  href="mailto:servicioalcliente@grupolatorreconstructora.com"
+                  className="text-gray-700 text-lg hover:text-[#f9dc5c] transition-colors duration-300 cursor-pointer"
+                >
+                  servicioalcliente@grupolatorreconstructora.com
+                </a>
               </motion.div>
 
               <motion.div
@@ -110,7 +119,12 @@ Este mensaje fue enviado desde el formulario de contacto del sitio web de Constr
                 className="flex items-center space-x-3"
               >
                 <Phone className="w-6 h-6 text-[#f9dc5c]" />
-                <span className="text-gray-700 text-lg">+506-8888-8888</span>
+                <a
+                  href="tel:+506-8785-6105"
+                  className="text-gray-700 text-lg hover:text-[#f9dc5c] transition-colors duration-300 cursor-pointer"
+                >
+                  +506-8785-6105
+                </a>
               </motion.div>
             </div>
           </motion.div>
@@ -137,12 +151,12 @@ Este mensaje fue enviado desde el formulario de contacto del sitio web de Constr
               </div>
 
               <div className="relative">
-                <Phone className="absolute left-0 top-3 w-5 h-5 text-[#f9dc5c]" />
+                <Mail className="absolute left-0 top-3 w-5 h-5 text-[#f9dc5c]" />
                 <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Teléfono"
-                  value={formData.phone}
+                  type="email"
+                  name="email"
+                  placeholder="Correo..."
+                  value={formData.email}
                   onChange={handleInputChange}
                   className="w-full pl-8 py-3 bg-transparent border-b-2 border-gray-300 focus:border-[#f9dc5c] outline-none transition-colors duration-300 text-gray-900 placeholder-gray-500"
                   required
@@ -151,12 +165,12 @@ Este mensaje fue enviado desde el formulario de contacto del sitio web de Constr
               </div>
 
               <div className="relative">
-                <Mail className="absolute left-0 top-3 w-5 h-5 text-[#f9dc5c]" />
+                <Phone className="absolute left-0 top-3 w-5 h-5 text-[#f9dc5c]" />
                 <input
-                  type="email"
-                  name="email"
-                  placeholder="Correo..."
-                  value={formData.email}
+                  type="tel"
+                  name="phone"
+                  placeholder="Teléfono"
+                  value={formData.phone}
                   onChange={handleInputChange}
                   className="w-full pl-8 py-3 bg-transparent border-b-2 border-gray-300 focus:border-[#f9dc5c] outline-none transition-colors duration-300 text-gray-900 placeholder-gray-500"
                   required
@@ -212,9 +226,9 @@ Este mensaje fue enviado desde el formulario de contacto del sitio web de Constr
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-center text-green-600 text-sm"
+                  className="text-center #f9dc5c text-sm"
                 >
-                  ¡Mensaje enviado exitosamente! Se abrirá su cliente de correo.
+                  ¡Mensaje enviado exitosamente! Nos pondremos en contacto pronto.
                 </motion.div>
               )}
 
@@ -224,7 +238,7 @@ Este mensaje fue enviado desde el formulario de contacto del sitio web de Constr
                   animate={{ opacity: 1, y: 0 }}
                   className="text-center text-red-600 text-sm"
                 >
-                  Error al enviar el mensaje. Por favor, inténtelo de nuevo.
+                  {errorMessage || "Error al enviar el mensaje. Por favor, inténtelo de nuevo."}
                 </motion.div>
               )}
             </form>

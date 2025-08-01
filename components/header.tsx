@@ -14,8 +14,6 @@ export default function Header() {
   const { scrollY } = useScroll()
   const pathname = usePathname()
   const router = useRouter()
-
-  // Determine if we're on a page with white background
   const isLightBackground = pathname === "/contacto"
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -29,14 +27,9 @@ export default function Header() {
 
   const handleNuestraEmpresaClick = (e: React.MouseEvent) => {
     e.preventDefault()
-    setIsMobileMenuOpen(false) // Close mobile menu
-
-    // Only handle smooth scroll if we're on the main page
+    setIsMobileMenuOpen(false) 
     if (pathname === "/") {
-      // Dispatch smooth scroll event to prevent loader
       window.dispatchEvent(new Event("smooth-scroll-start"))
-
-      // Perform smooth scroll
       const aboutSection = document.getElementById("about-section")
       if (aboutSection) {
         aboutSection.scrollIntoView({
@@ -45,7 +38,6 @@ export default function Header() {
         })
       }
     } else {
-      // If not on main page, trigger navigation with loader
       window.dispatchEvent(new Event("navigation-start"))
       router.push("/")
     }
@@ -53,8 +45,6 @@ export default function Header() {
 
   const handleNavigation = (href: string, e: React.MouseEvent) => {
     setIsMobileMenuOpen(false) // Close mobile menu
-
-    // For navigation to different pages, trigger loader and navigate
     if (pathname !== href) {
       e.preventDefault()
       window.dispatchEvent(new Event("navigation-start"))
@@ -63,15 +53,12 @@ export default function Header() {
   }
 
   const handleLogoClick = (e: React.MouseEvent) => {
-    setIsMobileMenuOpen(false) // Close mobile menu
-
-    // Logo click behavior
+    setIsMobileMenuOpen(false) 
     if (pathname !== "/") {
       e.preventDefault()
       window.dispatchEvent(new Event("navigation-start"))
       router.push("/")
     }
-    // If already on main page, do nothing (no loader, no navigation)
   }
 
   const toggleMobileMenu = () => {
@@ -119,7 +106,6 @@ export default function Header() {
               </Link>
             </motion.div>
 
-            {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center pr-8">
               <nav className="flex items-center space-x-8 mr-12">
                 {navigationItems.map((item, index) => (
@@ -156,10 +142,9 @@ export default function Header() {
                 ))}
               </nav>
 
-              {/* Social Media Icons */}
               <div className="flex items-center space-x-3">
                 <motion.a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/grupolatorreconstructora?igsh=cWJ0ZjZ4eDRjd3M%3D&utm_source=qr"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
@@ -171,7 +156,7 @@ export default function Header() {
                   <Instagram className="w-5 h-5" />
                 </motion.a>
                 <motion.a
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/profile.php?id=61573526678685"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
@@ -185,7 +170,6 @@ export default function Header() {
               </div>
             </div>
 
-            {/* Mobile Menu Button */}
             <motion.button
               onClick={toggleMobileMenu}
               whileTap={{ scale: 0.95 }}
@@ -200,11 +184,9 @@ export default function Header() {
         </div>
       </motion.header>
 
-      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -214,7 +196,6 @@ export default function Header() {
               onClick={() => setIsMobileMenuOpen(false)}
             />
 
-            {/* Mobile Menu */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
@@ -228,7 +209,6 @@ export default function Header() {
                 isLightBackground ? "bg-white" : "bg-gray-900"
               } shadow-2xl`}
             >
-              {/* Mobile Menu Header */}
               <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
                 <img
                   src={isLightBackground ? "/logo-black.svg" : "/logo-white.svg"}
@@ -245,7 +225,6 @@ export default function Header() {
                 </button>
               </div>
 
-              {/* Mobile Navigation */}
               <nav className="flex flex-col p-6 space-y-6">
                 {navigationItems.map((item, index) => (
                   <motion.div
@@ -273,7 +252,6 @@ export default function Header() {
                 ))}
               </nav>
 
-              {/* Mobile Social Media */}
               <div className="absolute bottom-8 left-6 right-6">
                 <div className="flex items-center justify-center space-x-6">
                   <motion.a
