@@ -43,19 +43,15 @@ export default function DesignPlansSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
   const [shouldAnimateTitle, setShouldAnimateTitle] = useState(false)
-
-  // Start title animation
   useEffect(() => {
     if (isInView) {
       const timer = setTimeout(() => {
         setShouldAnimateTitle(true)
-      }, 200) // Small delay after section is in view
+      }, 200) 
 
       return () => clearTimeout(timer)
     }
   }, [isInView])
-
-  // Split text into words
   const splitWords = (text: string) => {
     return text.split(" ").map((word, index) => (
       <motion.span
@@ -76,7 +72,7 @@ export default function DesignPlansSection() {
               }
         }
         transition={{
-          duration: 0.6, // 600ms duration
+          duration: 0.6, 
           ease: [0.075, 0.82, 0.165, 1], 
           delay: shouldAnimateTitle ? index * 0.5 : 0, // 600ms delay between words
         }}
@@ -119,7 +115,6 @@ export default function DesignPlansSection() {
   return (
     <section ref={ref} className="py-20 bg-white w-full">
       <div className="container mx-auto px-6">
-        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-extrabold text-gray-900 mb-6 uppercase tracking-wider">
             {splitWords("Diseño y elaboración de planos")}
@@ -144,7 +139,7 @@ export default function DesignPlansSection() {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 2.2, ease: "easeOut" }} // After title and description
+          transition={{ duration: 0.8, delay: 2.2, ease: "easeOut" }} 
           className="relative w-full max-w-6xl mx-auto"
         >
           <div

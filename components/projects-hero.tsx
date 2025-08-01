@@ -8,15 +8,13 @@ export default function ProjectsHero() {
 
   // Start animation after page loader finishes
   useEffect(() => {
-    // Wait for the page loader to finish (2.5s) plus a small buffer
     const timer = setTimeout(() => {
       setShouldAnimate(true)
-    }, 3000) // 3 seconds to ensure loader is completely done
+    }, 3000) 
 
     return () => clearTimeout(timer)
   }, [])
 
-  // Split text into individual letters
   const splitText = (text: string) => {
     return text.split("").map((char, index) => (
       <motion.span
@@ -37,9 +35,9 @@ export default function ProjectsHero() {
               }
         }
         transition={{
-          duration: 1.3, // 1300ms duration
+          duration: 1.3, 
           ease: "easeOut",
-          delay: shouldAnimate ? index * 0.045 : 0, // 45ms per letter
+          delay: shouldAnimate ? index * 0.045 : 0,
         }}
         className="inline-block"
         style={{
@@ -55,7 +53,6 @@ export default function ProjectsHero() {
 
   return (
     <section className="relative h-screen overflow-hidden">
-      {/* Background Video */}
       <div className="absolute inset-0">
         <video
           className="w-full h-full object-cover"
@@ -68,7 +65,6 @@ export default function ProjectsHero() {
         </video>
       </div>
 
-      {/* Translucent black overlay for better text readability */}
       <div className="absolute inset-0 bg-black/45" />
 
       <div className="relative z-10 container mx-auto px-6 h-full flex items-center">

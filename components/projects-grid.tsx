@@ -72,7 +72,6 @@ export default function ProjectsGrid() {
   const [selectedCity, setSelectedCity] = useState("")
   const [showCityFilter, setShowCityFilter] = useState(false)
 
-  // Filter projects based on search term and selected city
   const filteredProjects = projects.filter((project) => {
     const matchesSearch =
       project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -104,7 +103,6 @@ export default function ProjectsGrid() {
           className="mb-12"
         >
           <div className="flex flex-col md:flex-row gap-4 max-w-4xl mx-auto">
-            {/* Search Input */}
             <div className="relative flex-1">
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
@@ -116,7 +114,6 @@ export default function ProjectsGrid() {
               />
             </div>
 
-            {/* City Filter Button */}
             <div className="relative">
               <motion.button
                 whileHover={{ scale: 1.02 }}
@@ -140,8 +137,6 @@ export default function ProjectsGrid() {
                   </button>
                 )}
               </motion.button>
-
-              {/* City Dropdown */}
               {showCityFilter && (
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
@@ -203,8 +198,6 @@ export default function ProjectsGrid() {
               )}
             </motion.div>
           )}
-
-          {/* Results Counter */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -215,8 +208,6 @@ export default function ProjectsGrid() {
               : `Mostrando ${filteredProjects.length} de ${projects.length} proyectos`}
           </motion.div>
         </motion.div>
-
-        {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredProjects.length > 0 ? (
             filteredProjects.map((project, index) => (

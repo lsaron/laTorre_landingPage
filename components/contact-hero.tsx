@@ -5,14 +5,12 @@ import { motion } from "framer-motion"
 export default function ContactHero() {
   return (
     <section className="relative h-screen overflow-hidden">
-      {/* Background decorative elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 text-[200px] font-bold text-gray-900/20 select-none">CONTACTO</div>
       </div>
 
       {/* Animated geometric shapes */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Large circle - floating motion */}
         <motion.div
           animate={{
             y: [-20, 20, -20],
@@ -25,8 +23,6 @@ export default function ContactHero() {
           }}
           className="absolute top-20 right-20 w-32 h-32 border-2 border-[#f9dc5c]/60 rounded-full"
         />
-
-        {/* Small yellow dot - pulsing and floating */}
         <motion.div
           animate={{
             scale: [1, 1.5, 1],

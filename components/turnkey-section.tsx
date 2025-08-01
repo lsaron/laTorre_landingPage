@@ -38,7 +38,7 @@ export default function TurnkeySection() {
                 className="w-full h-80 object-cover"
               />
             </div>
-          </motion.div>
+          </motion.div>D 
         </div>
       </div>
     </section>
