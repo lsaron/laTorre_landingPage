@@ -30,16 +30,15 @@ export default function LegacySection() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Un legado que comienza con confianza</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">Un legado que se construye con confianza</h2>
             <p className="text-gray-600 leading-relaxed mb-4">
-              Constructora La Torre nace con el firme propósito de construir sobre bases sólidas: integridad, compromiso
-              y trabajo en equipo. Estos valores guían cada decisión, cada plano y cada obra que emprendemos.
+              Con 16 años de trayectoria, Constructora La Torre se ha consolidado como una empresa comprometida con la calidad, la integridad y el trabajo en equipo.
+              Estos valores han guiado cada decisión, cada plano y cada obra a lo largo de nuestra historia.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              Aunque somos una empresa joven, creemos que la juventud trae consigo ideas frescas, decisiones concretas,
-              atención al detalle y un compromiso real con nuestros clientes y comunidades. Nos inspira la idea de dejar
-              huella no solo en lo que construimos, sino en cómo lo construimos: con transparencia, eficiencia y visión
-              a futuro. Cada proyecto es una promesa, y en La Torre, cumplirla es parte de lo que somos.
+              A través de los años, hemos cultivado relaciones sólidas con nuestros clientes, combinando experiencia técnica con atención al detalle y una visión clara hacia el futuro. 
+              Nos inspira dejar huella no solo en lo que construimos, sino en cómo lo hacemos: con transparencia, eficiencia y compromiso real.
+              Cada proyecto es una promesa, y en La Torre, cumplirla es parte esencial de lo que somos. 
             </p>
           </motion.div>
         </div>
