@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 246.64 277.38">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: .17em;
+      }
+
+      .cls-1, .cls-2 {
+        font-size: 30px;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        font-family: NewsCycle, 'News Cycle';
+      }
+
+      .cls-2 {
+        letter-spacing: .17em;
+      }
+
+      .cls-3 {
+        font-size: 16px;
+        letter-spacing: .5em;
+      }
+
+      .cls-4 {
+        font-size: 15px;
+        letter-spacing: .5em;
+      }
+
+      .cls-5 {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <g id="Logo">
+    <g id="Lines">
+      <polyline class="cls-5" points="59.72 175.19 59.72 2.47 114.38 30.92 114.38 178.2"/>
+      <polyline class="cls-5" points="130.11 176.39 130.61 91.14 185.05 113.14 185.05 178.03"/>
+      <line class="cls-5" x1="115.89" y1="176.69" x2="93.56" y2="176.69"/>
+      <line class="cls-5" x1="58.22" y1="176.69" x2="80.89" y2="176.69"/>
+      <line class="cls-5" x1="95.06" y1="175.22" x2="95.49" y2="83.49"/>
+      <polyline class="cls-5" points="150.24 178.12 149.29 47.19 96.4 83.54 94.84 84.73"/>
+      <line class="cls-5" x1="128.61" y1="176.63" x2="150.83" y2="176.63"/>
+      <polyline class="cls-5" points="26.23 177.86 26.23 102.3 76.13 77.67 79.39 75.92 79.39 175.2"/>
+    </g>
+    <g id="Text">
+      <text class="cls-2" transform="translate(15.87 223.92) scale(1.17 1)"><tspan x="0" y="0">LA </tspan></text>
+      <text class="cls-1" transform="translate(78.75 223.92) scale(1.18 1)"><tspan x="0" y="0">TORRE</tspan></text>
+      <text class="cls-3" transform="translate(58.95 248.91) scale(1.18 1)"><tspan x="0" y="0">GRUPO</tspan></text>
+      <text class="cls-4" transform="translate(0 271.56) scale(1.18 1)"><tspan x="0" y="0">CONSTRUCTORA</tspan></text>
+    </g>
+  </g>
+</svg>

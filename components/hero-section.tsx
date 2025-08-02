@@ -28,7 +28,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="text-sm text-gray-300 mb-4 tracking-wider"
+            className="text-base text-gray-300 mb-4 tracking-wider"
             >
             GRUPO LA TORRE CONSTRUCTORA
           </motion.div>

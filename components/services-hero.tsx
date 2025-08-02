@@ -64,7 +64,7 @@ export default function ServicesHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: shouldAnimate ? 0.8 : 3.8, duration: 0.8 }}
-            className="text-sm text-amber-200 mb-4 tracking-wider"
+            className="text-base text-amber-200 mb-4 tracking-wider"
           >
             Grupo La Torre Constructora
           </motion.div>

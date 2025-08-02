@@ -207,7 +207,7 @@ export default function PageLoader() {
               transition={{ duration: 1, delay: 0.5 }}
               className="mb-8"
             >
-              <img src="/logo-black.svg" alt="La Torre Grupo Constructora" className="h-36 w-auto" />
+              <img src="/logoBlack.svg" alt="La Torre Grupo Constructora" className="h-36 w-auto" />
             </motion.div>
 
             {/* Loading bar */}
